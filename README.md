@@ -1,17 +1,17 @@
-# Wave API client
+# Wave API PHP client
 
 ## Install
 
 ```bash
-$ composer require cba85/wave-api-client
+$ composer require cba85/wave-api-php-client
 ```
 
 ## Usage
 
 ```php
-use Wave\Client;
+use Wave\Wave;
 
-$wave = new Client('YOUR_WAVE_FULL_ACCESS_TOKEN');
+$wave = new Wave('YOUR_WAVE_FULL_ACCESS_TOKEN');
 ```
 
 ### Methods
@@ -20,17 +20,7 @@ $wave = new Client('YOUR_WAVE_FULL_ACCESS_TOKEN');
 
 ```php
 $optionalFields = ['id', 'firstName'];
-
 $user = $wave->getUser($optionalFields);
-```
-
-#### List businesses
-
-```php
-$optionalFields = ['pageInfo' => ['totalCount']];
-$optionalArguments = ['pageSize' => 25];
-
-$businesses = $wave->listBusinesses($optionalFields, $optionalArguments);
 ```
 
 ### GraphQL query
@@ -51,8 +41,7 @@ It's also possible to manually send a GraphQL query:
             }
             GRAPHQL;
 $wave = new Wave('YOUR_WAVE_FULL_ACCESS_TOKEN');
-$results = $wave->client->operation($query);
-$user = $results->data->user;
+$results = $wave->client->runRawQuery($query, false);
 ```
 
 ## Wave API documentation
@@ -61,11 +50,7 @@ See [Wave API documentation](https://developer.waveapps.com/hc/en-us/articles/36
 
 ## Tests
 
-Add a test token in an `.env` file based on `.env.example` file example to test Wave API:
-
-```
-WAVE_FULL_ACCESS_TOKEN="YOUR_WAVE_FULL_ACCESS_TOKEN"
-```
+Add Wave tokens and ids in an `.env` file based on `.env.example` file example to test Wave API.
 
 Then launch tests:
 

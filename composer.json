@@ -1,6 +1,6 @@
 {
-  "name": "cba85/wave-api-client",
-  "description": "Wave GraphQL API client",
+  "name": "cba85/wave-api-php-client",
+  "description": "Wave GraphQL API PHP client",
   "type": "library",
   "keywords": [
     "php",
@@ -8,7 +8,7 @@
     "wave",
     "api"
   ],
-  "homepage": "http://github.com/cba85/wave-api-client",
+  "homepage": "http://github.com/cba85/wave-api-php-client",
   "license": "MIT",
   "autoload": {
     "psr-4": {
