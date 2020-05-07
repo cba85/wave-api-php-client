@@ -39,6 +39,19 @@ $optionalArguments = ['businesses' => ['pageSize' => 25]];
 $businesses = $wave->listbusinesses($optionalFields, $optionalArguments);
 ```
 
+#### Get customer by ID
+
+https://developer.waveapps.com/hc/en-us/articles/360032911011-Query-Get-customer-by-id
+
+```php
+$optionalFields = ['customer' => ['id', 'name', 'email']];
+$wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+$customer = $wave->getCustomerById($optionalFields, [], [
+    'businessId' => getenv('WAVE_BUSINESS_ID'),
+    'customerId' => getenv('WAVE_CUSTOMER_ID')
+]);
+```
+
 ### GraphQL query
 
 It's also possible to manually send a GraphQL query using the [GraphQL client](https://github.com/mghoneimy/php-graphql-client) included behind the scene:

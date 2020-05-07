@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Wave\Wave;
+use GraphQL\Exception\QueryError;
 
 /**
  * Test get user
@@ -51,7 +52,7 @@ class GetUserTest extends TestCase
      */
     public function testGetUserWithIncorrectFields()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(QueryError::class);
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
         $wave->getUser(['user' => ['id', 'name']]);
     }
