@@ -57,8 +57,9 @@ $customer = $wave->getCustomerById($optionalFields, [], [
 https://developer.waveapps.com/hc/en-us/articles/360032569232-Mutation-Create-customer
 
 ```php
+$optionalFields = ['customer' => ['id', 'name', 'email']];
 $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-$customerCreate = $wave->createCustomer([], [], [
+$customerCreate = $wave->createCustomer($optionalFields, [], [
     'input' => [
         'businessId' => getenv('WAVE_BUSINESS_ID'),
         'name' => "Santa",
@@ -71,6 +72,21 @@ $customerCreate = $wave->createCustomer([], [], [
             'countryCode' => "CA"
         ],
         'currency' => "EUR"
+    ]
+]);
+```
+
+#### Patch customer
+
+https://developer.waveapps.com/hc/en-us/articles/360033059491-Mutation-Patch-customer
+
+```php
+$optionalFields = ['customer' => ['id', 'name', 'email']];
+$wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+$customerPatch = $wave->patchCustomer([], [], [
+    'input' => [
+        'id' => getenv('WAVE_CUSTOMER_ID'),
+        'email' => "new@email.com"
     ]
 ]);
 ```

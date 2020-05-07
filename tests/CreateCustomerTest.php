@@ -158,7 +158,7 @@ class CreateCustomerTest extends TestCase
     {
         $this->expectException(QueryError::class);
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $customerCreate = $wave->createCustomer([], [], [
+        $wave->createCustomer([], [], [
             'input' => [
                 'businessId' => '1234567890',
                 'name' => "Santa",
