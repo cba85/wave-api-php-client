@@ -7,5 +7,5 @@ namespace Wave\Operations\Contracts;
  */
 interface OperationInterface
 {
-    public function run(array $arguments);
+    public function run(array $fields, array $arguments, array $variables);
 }

@@ -47,6 +47,11 @@ class Wave
             throw new Exception('This method is not supported.');
         }
         $class = new $className($this->client);
-        return $class->run($arguments);
+        for ($i = 0; $i <= 2; $i++) {
+            if (!isset($arguments[$i])) {
+                $arguments[$i] = [];
+            }
+        }
+        return $class->run($arguments[0], $arguments[1], $arguments[2]);
     }
 }

@@ -28,14 +28,29 @@ abstract class Operation
      * Convert fields to GraphQL format
      *
      * @param array $fields
-     * @return string|array
+     * @return array
      */
-    public function setFields(array $fields)
+    public function setFields(array $fields): array
     {
         foreach ($this->defaultFields as $key => $defaultSubFields) {
             $fields[$key] ? $queryFields[$key] = $fields[$key] : $queryFields[$key]  = $defaultSubFields;
         }
 
         return $queryFields;
+    }
+
+    /**
+     * Convert arguments to GraphQL format
+     *
+     * @param array $arguments
+     * @return array
+     */
+    public function setArguments(array $arguments): array
+    {
+        foreach ($this->defaultArguments as $key => $defaultValue) {
+            !empty($arguments[$key]) ? $queryVariables[$key] = $arguments[$key] : $queryVariables[$key] = $defaultValue;
+        }
+
+        return $queryVariables;
     }
 }

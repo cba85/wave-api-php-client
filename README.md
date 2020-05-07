@@ -1,5 +1,9 @@
 # Wave API PHP client
 
+A PHP client for [Wave](https://www.waveapps.com/) API.
+
+> Note: I've created this package for my personal need. Not all the Wave API operation has been implemented. But you can add an operation by creating a new class in `src/Operations`.
+
 ## Install
 
 ```bash
@@ -14,18 +18,30 @@ use Wave\Wave;
 $wave = new Wave('YOUR_WAVE_FULL_ACCESS_TOKEN');
 ```
 
-### Methods
+### Available methods
 
 #### Get user
 
+https://developer.waveapps.com/hc/en-us/articles/360032552912-Query-Get-user
+
 ```php
-$optionalFields = ['id', 'firstName'];
+$optionalFields = ['user' => ['id', 'firstName']];
 $user = $wave->getUser($optionalFields);
+```
+
+#### List businesses
+
+https://developer.waveapps.com/hc/en-us/articles/360032908111-Query-List-businesses
+
+```php
+$optionalFields = ['pageInfo' => ['totalCount']];
+$optionalArguments = ['businesses' => ['pageSize' => 25]];
+$businesses = $wave->listbusinesses($optionalFields, $optionalArguments);
 ```
 
 ### GraphQL query
 
-It's also possible to manually send a GraphQL query:
+It's also possible to manually send a GraphQL query using the [GraphQL client](https://github.com/mghoneimy/php-graphql-client) included behind the scene:
 
 ```php
  $query = <<<'GRAPHQL'
