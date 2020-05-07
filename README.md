@@ -52,6 +52,29 @@ $customer = $wave->getCustomerById($optionalFields, [], [
 ]);
 ```
 
+#### Create customer
+
+https://developer.waveapps.com/hc/en-us/articles/360032569232-Mutation-Create-customer
+
+```php
+$wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+$customerCreate = $wave->createCustomer([], [], [
+    'input' => [
+        'businessId' => getenv('WAVE_BUSINESS_ID'),
+        'name' => "Santa",
+        'firstName' => "Saint",
+        'lastName' => "Nicolas",
+        'email' => "santa@claus.com",
+        'address' => [
+            'city' => "North Pole",
+            'postalCode' => "H0H H0H",
+            'countryCode' => "CA"
+        ],
+        'currency' => "EUR"
+    ]
+]);
+```
+
 ### GraphQL query
 
 It's also possible to manually send a GraphQL query using the [GraphQL client](https://github.com/mghoneimy/php-graphql-client) included behind the scene:
