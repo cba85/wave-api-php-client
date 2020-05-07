@@ -21,15 +21,6 @@ class GetCustomerById extends Operation implements OperationInterface
     ];
 
     /**
-     * Default arguments
-     *
-     * @var array
-     */
-    protected $defaultArguments = [
-        'businesses' => ['page' => 1, 'pageSize' => 10]
-    ];
-
-    /**
      * Run operation
      *
      * @param array $fields

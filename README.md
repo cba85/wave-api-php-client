@@ -39,6 +39,19 @@ $optionalArguments = ['businesses' => ['pageSize' => 25]];
 $businesses = $wave->listbusinesses($optionalFields, $optionalArguments);
 ```
 
+#### List products
+
+https://developer.waveapps.com/hc/en-us/articles/360032572872-Query-Paginate-list-of-products
+
+```php
+ $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+$products = $wave->listProducts([], [], [
+    'businessId' => getenv('WAVE_BUSINESS_ID'),
+    'page' => 1,
+    'pageSize' => 1
+]);
+```
+
 #### Get customer by ID
 
 https://developer.waveapps.com/hc/en-us/articles/360032911011-Query-Get-customer-by-id
@@ -87,6 +100,30 @@ $customerPatch = $wave->patchCustomer([], [], [
     'input' => [
         'id' => getenv('WAVE_CUSTOMER_ID'),
         'email' => "new@email.com"
+    ]
+]);
+```
+
+#### Create invoice
+
+https://developer.waveapps.com/hc/en-us/articles/360019968212-API-Reference
+
+```php
+$wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+$invoiceCreate = $wave->createInvoice([], [], [
+    'input' => [
+        'businessId' => getenv('WAVE_BUSINESS_ID'),
+        'customerId' => getenv('WAVE_CUSTOMER_ID'),
+        'status' => "DRAFT",
+        'items' => [
+            'productId' => getenv('WAVE_PRODUCT_ID'),
+            'description' => "test",
+            'quantity' => 1,
+            'unitPrice' => 14.99,
+            'taxes' => [
+                'salesTaxId' => getenv('WAVE_TAX_ID'),
+            ]
+        ]
     ]
 ]);
 ```

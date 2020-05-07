@@ -17,7 +17,7 @@ class ListBusinessesTest extends TestCase
     public function testListBusinesses()
     {
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $businesses = $wave->ListBusinesses();
+        $businesses = $wave->listBusinesses();
         $this->assertIsObject($businesses);
         $this->assertObjectHasAttribute('pageInfo', $businesses);
         $this->assertObjectHasAttribute('edges', $businesses);
@@ -39,7 +39,7 @@ class ListBusinessesTest extends TestCase
     public function testListBusinessesWithCorrectFields()
     {
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $businesses = $wave->ListBusinesses(['pageInfo' => ['totalCount']]);
+        $businesses = $wave->listBusinesses(['pageInfo' => ['totalCount']]);
         $this->assertIsObject($businesses);
         $this->assertObjectHasAttribute('pageInfo', $businesses);
         $this->assertObjectHasAttribute('edges', $businesses);
@@ -62,7 +62,7 @@ class ListBusinessesTest extends TestCase
     {
         $this->expectException(QueryError::class);
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $wave->ListBusinesses(['pageInfo' => ['count']]);
+        $wave->listBusinesses(['pageInfo' => ['count']]);
     }
 
     /**
@@ -73,7 +73,7 @@ class ListBusinessesTest extends TestCase
     public function testListBusinessesWithCorrectArguments()
     {
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $businesses = $wave->ListBusinesses([], ['businesses' => ['pageSize' => 25]]);
+        $businesses = $wave->listBusinesses([], ['businesses' => ['pageSize' => 25]]);
         $this->assertIsObject($businesses);
         $this->assertObjectHasAttribute('pageInfo', $businesses);
         $this->assertObjectHasAttribute('edges', $businesses);
@@ -96,6 +96,6 @@ class ListBusinessesTest extends TestCase
     {
         $this->expectException(QueryError::class);
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $wave->ListBusinesses([], ['businesses' => ['pageSize' => "ok"]]);
+        $wave->listBusinesses([], ['businesses' => ['pageSize' => "ok"]]);
     }
 }
