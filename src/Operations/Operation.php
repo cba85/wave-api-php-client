@@ -32,12 +32,8 @@ abstract class Operation
      */
     public function setFields(array $fields)
     {
-        if (count($this->defaultFields) == count($this->defaultFields, COUNT_RECURSIVE)) {
-            $fields ? $queryFields = $fields : $queryFields = $this->defaultFields;
-        } else {
-            foreach ($this->defaultFields as $key => $defaultSubFields) {
-                $fields[$key] ? $queryFields[$key] = $fields[$key] : $queryFields[$key]  = $defaultSubFields;
-            }
+        foreach ($this->defaultFields as $key => $defaultSubFields) {
+            $fields[$key] ? $queryFields[$key] = $fields[$key] : $queryFields[$key]  = $defaultSubFields;
         }
 
         return $queryFields;

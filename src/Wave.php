@@ -5,6 +5,9 @@ namespace Wave;
 use Exception;
 use GraphQL\Client;
 
+/**
+ * Wave API
+ */
 class Wave
 {
 

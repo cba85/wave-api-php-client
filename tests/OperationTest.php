@@ -29,6 +29,6 @@ class OperationTest extends TestCase
     {
         $this->expectException(\Exception::class);
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
-        $user = $wave->getUsers();
+        $wave->getUsers();
     }
 }

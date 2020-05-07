@@ -7,7 +7,9 @@ use GraphQL\Query;
 
 class GetUser extends Operation implements OperationInterface
 {
-    public $defaultFields = ['id', 'firstName', 'lastName', 'defaultEmail', 'createdAt', 'modifiedAt'];
+    public $defaultFields = [
+        'user' => ['id', 'firstName', 'lastName', 'defaultEmail', 'createdAt', 'modifiedAt']
+    ];
 
     /**
      * Run operation
@@ -17,9 +19,10 @@ class GetUser extends Operation implements OperationInterface
      */
     public function run(array $arguments): object
     {
-        $fields = $this->setFields($arguments);
+        $fields = $arguments[0];
+        $queryFields = $this->setFields($fields);
 
-        $gql = (new Query('user'))->setSelectionSet($fields);
+        $gql = (new Query('user'))->setSelectionSet($queryFields['user']);
         $results = $this->client->runQuery($gql);
 
         return $results->getData()->user;

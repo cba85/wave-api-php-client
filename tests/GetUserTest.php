@@ -25,4 +25,34 @@ class GetUserTest extends TestCase
         $this->assertObjectHasAttribute('createdAt', $user);
         $this->assertObjectHasAttribute('modifiedAt', $user);
     }
+
+    /**
+     * Test get user with correct fields
+     *
+     * @return void
+     */
+    public function testGetUserWithCorrectFields()
+    {
+        $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+        $user = $wave->getUser(['user' => ['id', 'defaultEmail']]);
+        $this->assertIsObject($user);
+        $this->assertObjectHasAttribute('id', $user);
+        $this->assertObjectNotHasAttribute('firstName', $user);
+        $this->assertObjectNotHasAttribute('lastName', $user);
+        $this->assertObjectHasAttribute('defaultEmail', $user);
+        $this->assertObjectNotHasAttribute('createdAt', $user);
+        $this->assertObjectNotHasAttribute('modifiedAt', $user);
+    }
+
+    /**
+     * Test get user with incorrect fields
+     *
+     * @return void
+     */
+    public function testGetUserWithIncorrectFields()
+    {
+        $this->expectException(\Exception::class);
+        $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
+        $wave->getUser(['user' => ['id', 'name']]);
+    }
 }
