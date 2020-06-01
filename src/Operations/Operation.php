@@ -33,7 +33,7 @@ abstract class Operation
     public function setFields(array $fields): array
     {
         foreach ($this->defaultFields as $key => $defaultSubFields) {
-            $fields[$key] ? $queryFields[$key] = $fields[$key] : $queryFields[$key]  = $defaultSubFields;
+            !empty($fields[$key]) ? $queryFields[$key] = $fields[$key] : $queryFields[$key]  = $defaultSubFields;
         }
 
         return $queryFields;

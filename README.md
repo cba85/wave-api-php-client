@@ -157,6 +157,24 @@ See [Wave API documentation](https://developer.waveapps.com/hc/en-us/articles/36
 
 Add Wave tokens and ids in an `.env` file based on `.env.example` file example to test Wave API.
 
+- `WAVE_FULL_ACCESS_TOKEN` : You Wave account full access token.
+- `WAVE_BUSINESS_ID` : Wave Business ID you can use for tests only.
+  - List them and pick one using : <br>
+  ```bash
+  $ ./vendor/bin/phpunit --filter testListBusiness
+  ```
+- `WAVE_CUSTOMER_ID` : Wave Customer ID you can use for tests only.
+- `WAVE_PRODUCT_ID` : Wave Product ID you can use for tests only.
+  - List them and pick one using : <br>
+  ```bash
+  $ ./vendor/bin/phpunit --filter testListProducts
+  ```
+- `WAVE_TAX_ID` : A Wave Tax ID used for invoice creation tests.
+  - Find your defaultSalesTaxes using : <br>
+  ```bash
+  $ ./vendor/bin/phpunit --filter testListProducts
+  ```
+
 Then launch tests:
 
 ```bash

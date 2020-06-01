@@ -117,7 +117,7 @@ class PatchCustomerTest extends TestCase
         ], [], [
             'input' => [
                 'id' => getenv('WAVE_CUSTOMER_ID'),
-                'email' => "new3@email.com"
+                'email' => "test.updated@api.com"
             ]
         ]);
     }

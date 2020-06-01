@@ -19,7 +19,7 @@ class GetCustomerByIdTest extends TestCase
         $wave = new Wave(getenv('WAVE_FULL_ACCESS_TOKEN'));
         $customer = $wave->getCustomerById([], [], [
             'businessId' => getenv('WAVE_BUSINESS_ID'),
-            'customerId' => getenv('WAVE_CUSTOMER_ID')
+            'customerId' => getenv('WAVE_CUSTOMER_ID'),
         ]);
         $this->assertIsObject($customer);
         $this->assertObjectHasAttribute('id', $customer);
@@ -59,7 +59,7 @@ class GetCustomerByIdTest extends TestCase
             'customer' => ['id', 'name', 'email']
         ], [], [
             'businessId' => getenv('WAVE_BUSINESS_ID'),
-            'customerId' => getenv('WAVE_CUSTOMER_ID')
+            'customerId' => getenv('WAVE_CUSTOMER_ID'),
         ]);
         $this->assertIsObject($customer);
         $this->assertObjectHasAttribute('id', $customer);
@@ -100,7 +100,7 @@ class GetCustomerByIdTest extends TestCase
             'customer' => ['uuid']
         ], [], [
             'businessId' => getenv('WAVE_BUSINESS_ID'),
-            'customerId' => getenv('WAVE_CUSTOMER_ID')
+            'customerId' => getenv('WAVE_CUSTOMER_ID'),
         ]);
     }
 }

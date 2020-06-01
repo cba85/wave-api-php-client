@@ -20,14 +20,14 @@ class CreateCustomerTest extends TestCase
         $customerCreate = $wave->createCustomer([], [], [
             'input' => [
                 'businessId' => getenv('WAVE_BUSINESS_ID'),
-                'name' => "Santa",
-                'firstName' => "Saint",
-                'lastName' => "Nicolas",
-                'email' => "santa@claus.com",
+                'name' => "_API_TEST",
+                'firstName' => "API",
+                'lastName' => "TEST",
+                'email' => "api@test.com",
                 'address' => [
-                    'city' => "North Pole",
-                    'postalCode' => "H0H H0H",
-                    'countryCode' => "CA"
+                    'city' => "Test",
+                    'postalCode' => "99999",
+                    'countryCode' => "FR"
                 ],
                 'currency' => "EUR"
             ]
@@ -77,14 +77,14 @@ class CreateCustomerTest extends TestCase
         ], [], [
             'input' => [
                 'businessId' => getenv('WAVE_BUSINESS_ID'),
-                'name' => "Santa",
-                'firstName' => "Saint",
-                'lastName' => "Nicolas",
-                'email' => "santa@claus.com",
+                'name' => "_API_TEST",
+                'firstName' => "API",
+                'lastName' => "TEST",
+                'email' => "api@test.com",
                 'address' => [
-                    'city' => "North Pole",
-                    'postalCode' => "H0H H0H",
-                    'countryCode' => "CA"
+                    'city' => "Test",
+                    'postalCode' => "99999",
+                    'countryCode' => "FR"
                 ],
                 'currency' => "EUR"
             ]
